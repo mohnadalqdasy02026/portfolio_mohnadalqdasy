@@ -1,0 +1,470 @@
+@import "tailwindcss";
+
+/* ========== AURORA THEME (Purple/Pink) ========== */
+.theme-aurora {
+  --background: 270 30% 8%;
+  --foreground: 0 0% 98%;
+  --card: 280 25% 12%;
+  --card-foreground: 0 0% 98%;
+  --primary: 270 80% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 280 20% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 275 20% 15%;
+  --muted-foreground: 270 20% 65%;
+  --accent: 290 30% 18%;
+  --accent-foreground: 290 70% 80%;
+  --border: 275 20% 20%;
+  --ring: 270 80% 65%;
+  --gradient-1: 270 80% 65%;
+  --gradient-2: 290 70% 55%;
+  --gradient-3: 310 60% 55%;
+  --glow: 270 80% 65%;
+  --bg-pattern: radial-gradient(ellipse at 20% 50%, hsl(270 50% 20% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, hsl(290 40% 25% / 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, hsl(310 35% 20% / 0.3) 0%, transparent 50%);
+}
+
+/* ========== OCEAN THEME (Blue/Cyan) ========== */
+.theme-ocean {
+  --background: 210 40% 10%;
+  --foreground: 0 0% 98%;
+  --card: 215 35% 14%;
+  --card-foreground: 0 0% 98%;
+  --primary: 200 85% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 30% 18%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 215 25% 15%;
+  --muted-foreground: 200 20% 70%;
+  --accent: 220 40% 20%;
+  --accent-foreground: 200 80% 80%;
+  --border: 210 25% 22%;
+  --ring: 200 85% 55%;
+  --gradient-1: 200 85% 55%;
+  --gradient-2: 210 70% 50%;
+  --gradient-3: 220 60% 45%;
+  --glow: 200 85% 55%;
+  --bg-pattern: radial-gradient(ellipse at 30% 30%, hsl(200 50% 25% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, hsl(210 45% 20% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, hsl(220 40% 15% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== SUNSET THEME (Orange/Red) ========== */
+.theme-sunset {
+  --background: 25 35% 8%;
+  --foreground: 0 0% 98%;
+  --card: 28 30% 12%;
+  --card-foreground: 0 0% 98%;
+  --primary: 25 95% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 30 25% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 28 25% 12%;
+  --muted-foreground: 25 20% 70%;
+  --accent: 35 35% 18%;
+  --accent-foreground: 25 85% 80%;
+  --border: 30 25% 20%;
+  --ring: 25 95% 60%;
+  --gradient-1: 25 95% 60%;
+  --gradient-2: 15 90% 55%;
+  --gradient-3: 5 85% 55%;
+  --glow: 25 95% 60%;
+  --bg-pattern: radial-gradient(ellipse at 20% 40%, hsl(25 60% 25% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 60%, hsl(15 50% 20% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, hsl(5 55% 18% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== FOREST THEME (Green) ========== */
+.theme-forest {
+  --background: 145 30% 8%;
+  --foreground: 0 0% 98%;
+  --card: 148 25% 12%;
+  --card-foreground: 0 0% 98%;
+  --primary: 142 75% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 145 25% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 148 22% 12%;
+  --muted-foreground: 142 20% 65%;
+  --accent: 155 30% 18%;
+  --accent-foreground: 142 65% 80%;
+  --border: 145 20% 20%;
+  --ring: 142 75% 50%;
+  --gradient-1: 142 75% 50%;
+  --gradient-2: 155 60% 45%;
+  --gradient-3: 165 55% 40%;
+  --glow: 142 75% 50%;
+  --bg-pattern: radial-gradient(ellipse at 30% 50%, hsl(142 45% 20% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, hsl(155 40% 18% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 70%, hsl(165 35% 15% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== ROSE THEME (Pink) ========== */
+.theme-rose {
+  --background: 350 30% 8%;
+  --foreground: 0 0% 98%;
+  --card: 355 25% 12%;
+  --card-foreground: 0 0% 98%;
+  --primary: 350 85% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 355 25% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 350 22% 12%;
+  --muted-foreground: 350 20% 70%;
+  --accent: 0 35% 18%;
+  --accent-foreground: 350 75% 85%;
+  --border: 355 20% 20%;
+  --ring: 350 85% 60%;
+  --gradient-1: 350 85% 60%;
+  --gradient-2: 0 75% 55%;
+  --gradient-3: 10 70% 55%;
+  --glow: 350 85% 60%;
+  --bg-pattern: radial-gradient(ellipse at 25% 40%, hsl(350 50% 22% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 65%, hsl(0 45% 20% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 75%, hsl(10 50% 18% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== MIDNIGHT THEME (Deep Blue/Purple) ========== */
+.theme-midnight {
+  --background: 250 35% 6%;
+  --foreground: 0 0% 98%;
+  --card: 255 28% 10%;
+  --card-foreground: 0 0% 98%;
+  --primary: 250 70% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 255 25% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 250 22% 12%;
+  --muted-foreground: 250 15% 70%;
+  --accent: 265 35% 15%;
+  --accent-foreground: 250 60% 85%;
+  --border: 255 20% 18%;
+  --ring: 250 70% 65%;
+  --gradient-1: 250 70% 65%;
+  --gradient-2: 260 60% 55%;
+  --gradient-3: 270 50% 50%;
+  --glow: 250 70% 65%;
+  --bg-pattern: radial-gradient(ellipse at 20% 30%, hsl(250 50% 20% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, hsl(260 45% 18% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 60%, hsl(270 40% 15% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== EMERALD THEME (Teal/Green) ========== */
+.theme-emerald {
+  --background: 165 30% 8%;
+  --foreground: 0 0% 98%;
+  --card: 168 25% 12%;
+  --card-foreground: 0 0% 98%;
+  --primary: 160 65% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 165 22% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 168 20% 12%;
+  --muted-foreground: 160 18% 70%;
+  --accent: 175 30% 18%;
+  --accent-foreground: 160 55% 85%;
+  --border: 165 18% 20%;
+  --ring: 160 65% 50%;
+  --gradient-1: 160 65% 50%;
+  --gradient-2: 175 55% 45%;
+  --gradient-3: 185 50% 40%;
+  --glow: 160 65% 50%;
+  --bg-pattern: radial-gradient(ellipse at 35% 45%, hsl(160 45% 20% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 65% 35%, hsl(175 40% 18% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 75%, hsl(185 35% 15% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== AMBER THEME (Gold/Yellow) ========== */
+.theme-amber {
+  --background: 38 30% 8%;
+  --foreground: 0 0% 98%;
+  --card: 40 25% 12%;
+  --card-foreground: 0 0% 98%;
+  --primary: 38 95% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 42 22% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 40 20% 12%;
+  --muted-foreground: 38 18% 70%;
+  --accent: 45 30% 18%;
+  --accent-foreground: 38 80% 85%;
+  --border: 42 18% 20%;
+  --ring: 38 95% 55%;
+  --gradient-1: 38 95% 55%;
+  --gradient-2: 30 85% 50%;
+  --gradient-3: 20 80% 50%;
+  --glow: 38 95% 55%;
+  --bg-pattern: radial-gradient(ellipse at 30% 40%, hsl(38 55% 25% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, hsl(30 50% 20% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, hsl(20 55% 18% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== CYAN THEME (Cyan/Blue) ========== */
+.theme-cyan {
+  --background: 190 35% 8%;
+  --foreground: 0 0% 98%;
+  --card: 193 28% 12%;
+  --card-foreground: 0 0% 98%;
+  --primary: 185 85% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 190 25% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 193 22% 12%;
+  --muted-foreground: 185 18% 70%;
+  --accent: 200 35% 18%;
+  --accent-foreground: 185 75% 85%;
+  --border: 190 20% 20%;
+  --ring: 185 85% 55%;
+  --gradient-1: 185 85% 55%;
+  --gradient-2: 195 70% 50%;
+  --gradient-3: 205 65% 45%;
+  --glow: 185 85% 55%;
+  --bg-pattern: radial-gradient(ellipse at 25% 35%, hsl(185 50% 22% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 65%, hsl(195 45% 18% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 45% 75%, hsl(205 40% 15% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== VIOLET THEME (Purple/Violet) ========== */
+.theme-violet {
+  --background: 280 30% 6%;
+  --foreground: 0 0% 98%;
+  --card: 283 25% 10%;
+  --card-foreground: 0 0% 98%;
+  --primary: 280 85% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 285 25% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 280 20% 12%;
+  --muted-foreground: 280 15% 70%;
+  --accent: 290 35% 15%;
+  --accent-foreground: 280 75% 85%;
+  --border: 285 20% 18%;
+  --ring: 280 85% 65%;
+  --gradient-1: 280 85% 65%;
+  --gradient-2: 290 75% 55%;
+  --gradient-3: 300 65% 55%;
+  --glow: 280 85% 65%;
+  --bg-pattern: radial-gradient(ellipse at 30% 30%, hsl(280 50% 20% / 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, hsl(290 45% 18% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, hsl(300 40% 15% / 0.3) 0%, transparent 60%);
+}
+
+/* ========== GLOBAL STYLES ========== */
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  background-image: var(--bg-pattern);
+  background-attachment: fixed;
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+::-webkit-scrollbar-thumb { 
+  background: hsl(var(--primary)); 
+  border-radius: 10px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: hsl(var(--primary) / 0.8); 
+}
+
+/* ========== GLASSMORPHISM ========== */
+.glass {
+  background: hsl(var(--card) / 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.glass-strong {
+  background: hsl(var(--card) / 0.85);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid hsl(var(--border) / 0.6);
+}
+
+/* ========== GRADIENTS ========== */
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--gradient-1)), hsl(var(--gradient-2)), hsl(var(--gradient-3)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(var(--gradient-1)), hsl(var(--gradient-2)), hsl(var(--gradient-3)));
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+              linear-gradient(135deg, hsl(var(--gradient-1)), hsl(var(--gradient-2)), hsl(var(--gradient-3))) border-box;
+  border: 2px solid transparent;
+}
+
+/* ========== BUTTONS ========== */
+.btn-primary {
+  background: linear-gradient(135deg, hsl(var(--gradient-1)), hsl(var(--gradient-2)), hsl(var(--gradient-3)));
+  color: var(--primary-foreground);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px hsl(var(--glow) / 0.4);
+}
+
+.btn-secondary {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid hsl(var(--border));
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--primary) / 0.15);
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px hsl(var(--glow) / 0.15);
+  border-color: hsl(var(--primary) / 0.4);
+}
+
+/* ========== EFFECTS ========== */
+.glow-effect {
+  box-shadow: 0 0 30px hsl(var(--glow) / 0.4);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px hsl(var(--glow) / 0.5);
+}
+
+.border-glow {
+  box-shadow: inset 0 0 20px hsl(var(--glow) / 0.1), 0 0 20px hsl(var(--glow) / 0.2);
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes aurora {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.aurora-gradient {
+  background: linear-gradient(
+    135deg, 
+    hsl(var(--gradient-1)), 
+    hsl(var(--gradient-2)), 
+    hsl(var(--gradient-3)),
+    hsl(var(--gradient-1)),
+    hsl(var(--gradient-2))
+  );
+  background-size: 400% 400%;
+  animation: aurora 15s ease infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--glow) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--glow) / 0.5); }
+}
+
+.pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+/* ========== ADMIN STYLES ========== */
+.admin-sidebar {
+  background: linear-gradient(180deg, hsl(var(--primary) / 0.08) 0%, hsl(var(--background)) 100%);
+  border-right: 1px solid hsl(var(--border));
+}
+
+.admin-nav-item {
+  color: hsl(var(--muted-foreground));
+  transition: all 0.3s;
+}
+
+.admin-nav-item:hover, .admin-nav-item.active {
+  color: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.1);
+}
+
+/* ========== INPUTS ========== */
+input, textarea, select {
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+  transition: all 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.2);
+}
+
+/* ========== SECTION BACKGROUNDS ========== */
+.section-dark {
+  background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--background)) 100%);
+}
+
+.section-accent {
+  background: linear-gradient(180deg, hsl(var(--accent) / 0.4) 0%, hsl(var(--background)) 100%);
+}
