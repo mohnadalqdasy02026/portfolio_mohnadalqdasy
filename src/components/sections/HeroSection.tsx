@@ -14,7 +14,6 @@ export function HeroSection() {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
-  // Memoize derived values to prevent unnecessary re-renders
   const heroName = useMemo(() => {
     if (!data) return "";
     return language === "ar" 
@@ -39,10 +38,10 @@ export function HeroSection() {
   const socialLinks = useMemo(() => {
     if (!data) return [];
     return [
-      { icon: Github, href: data.content.social.github, label: "GitHub" },
+      { icon: GithubIcon, href: data.content.social.github, label: "GitHub" },
       { icon: LinkedinIcon, href: data.content.social.linkedin, label: "LinkedIn" },
-      { icon: Facebook, href: data.content.social.facebook, label: "Facebook" },
-      { icon: Instagram, href: data.content.social.instagram, label: "Instagram" },
+      { icon: FacebookIcon, href: data.content.social.facebook, label: "Facebook" },
+      { icon: InstagramIcon, href: data.content.social.instagram, label: "Instagram" },
     ].filter(link => link.href && link.href !== "#" && link.href !== "");
   }, [data]);
 
@@ -79,7 +78,6 @@ export function HeroSection() {
     }
   };
 
-  // Show loading state while data loads
   if (!data) {
     return (
       <section id="home" className="min-h-screen flex items-center justify-center">
@@ -95,7 +93,6 @@ export function HeroSection() {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${direction === "rtl" ? "lg:flex-row-reverse" : ""}`}>
-          {/* Text Content */}
           <motion.div
             className="flex-1 text-center lg:text-start order-2 lg:order-1"
             initial={{ opacity: 0, y: 50 }}
@@ -182,7 +179,6 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Avatar */}
           <motion.div
             className="flex-1 flex justify-center order-1 lg:order-2"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -208,7 +204,6 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
