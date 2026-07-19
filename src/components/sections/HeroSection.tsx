@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Download, Eye, Mail, ChevronDown, Github, Linkedin, Facebook, Instagram } from "lucide-react";
+import { Download, Eye, Mail, ChevronDown, Github, LinkedinIcon, Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useData } from "@/contexts/DataContext";
@@ -40,7 +40,7 @@ export function HeroSection() {
     if (!data) return [];
     return [
       { icon: Github, href: data.content.social.github, label: "GitHub" },
-      { icon: Linkedin, href: data.content.social.linkedin, label: "LinkedIn" },
+      { icon: LinkedinIcon, href: data.content.social.linkedin, label: "LinkedIn" },
       { icon: Facebook, href: data.content.social.facebook, label: "Facebook" },
       { icon: Instagram, href: data.content.social.instagram, label: "Instagram" },
     ].filter(link => link.href && link.href !== "#" && link.href !== "");
