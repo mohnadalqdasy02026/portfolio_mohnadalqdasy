@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { getPortfolioData, savePortfolioData } from "@/lib/supabase";
 
 // Types
 export interface Project {
@@ -88,15 +89,15 @@ export interface DataState {
   content: SiteContent;
 }
 
-// This is only used before data loads from server - using gradient backgrounds instead of external images
-const initialData: DataState = {
+// Default data
+const defaultData: DataState = {
   projects: [
     {
       id: 1,
       title: "Building Materials ERP",
       titleAr: "نظام إدارة مواد البناء",
-      description: "Comprehensive ERP system for building materials management with inventory, sales, and accounting modules.",
-      descriptionAr: "نظام ERP شامل لإدارة مواد البناء مع وحدات المخزون والمبيعات والمحاسبة.",
+      description: "Comprehensive ERP system for building materials management.",
+      descriptionAr: "نظام ERP شامل لإدارة مواد البناء.",
       category: "desktop",
       technologies: ["C#", ".NET", "DevExpress", "SQL Server"],
       image: "",
@@ -107,34 +108,22 @@ const initialData: DataState = {
       id: 2,
       title: "Hospital Management System",
       titleAr: "نظام إدارة المستشفى",
-      description: "Complete hospital management with patients, appointments, billing, and medical records.",
-      descriptionAr: "إدارة مستشفى متكاملة مع المرضى والمواعيد والفواتير والسجلات الطبية.",
+      description: "Complete hospital management system.",
+      descriptionAr: "نظام إدارة مستشفى متكامل.",
       category: "desktop",
-      technologies: ["C#", "WinForms", "SQL Server", "DevExpress"],
+      technologies: ["C#", "WinForms", "SQL Server"],
       image: "",
       featured: true,
       date: "2024-01-10"
     },
     {
       id: 3,
-      title: "Pharmacy Management",
-      titleAr: "نظام إدارة الصيدلية",
-      description: "Pharmacy inventory and sales management with expiry tracking and reports.",
-      descriptionAr: "إدارة مخزون ومبيعات الصيدلية مع تتبع انتهاء الصلاحية والتقارير.",
-      category: "desktop",
-      technologies: ["C#", "DevExpress", "SQL Server"],
-      image: "",
-      featured: false,
-      date: "2023-12-20"
-    },
-    {
-      id: 4,
       title: "Portfolio Website",
       titleAr: "موقع البورتفوليو",
-      description: "Modern responsive portfolio with admin dashboard and bilingual support.",
-      descriptionAr: "موقع بورتفوليو عصري متجاوب مع لوحة تحكم ودعم ثنائي اللغة.",
+      description: "Modern responsive portfolio with admin dashboard.",
+      descriptionAr: "موقع بورتفوليو عصري مع لوحة تحكم.",
       category: "web",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind"],
+      technologies: ["Next.js", "React", "TypeScript"],
       image: "",
       featured: true,
       date: "2024-01-05"
@@ -163,9 +152,7 @@ const initialData: DataState = {
   gallery: [
     { id: 1, title: "ERP Dashboard", titleAr: "لوحة ERP", category: "desktop", url: "", featured: true, date: "2024-01-15" },
     { id: 2, title: "Hospital Interface", titleAr: "واجهة مستشفى", category: "desktop", url: "", featured: true, date: "2024-01-10" },
-    { id: 3, title: "Portfolio Website", titleAr: "موقع بورتفوليو", category: "web", url: "", featured: true, date: "2024-01-05" },
-    { id: 4, title: "UI Design", titleAr: "تصميم UI", category: "uiux", url: "", featured: false, date: "2024-01-01" },
-    { id: 5, title: "Certificate 2024", titleAr: "شهادة 2024", category: "certificates", url: "", featured: false, date: "2023-12-20" }
+    { id: 3, title: "Portfolio Website", titleAr: "موقع بورتفوليو", category: "web", url: "", featured: true, date: "2024-01-05" }
   ],
   testimonials: [
     {
@@ -173,8 +160,8 @@ const initialData: DataState = {
       name: "Ahmed Mohammed",
       company: "Tech Solutions",
       rating: 5,
-      text: "Excellent work on our ERP system. Very professional and delivered on time.",
-      textAr: "عمل ممتاز في نظام ERP. احترافي جداً وسلم في الوقت المحدد.",
+      text: "Excellent work on our ERP system.",
+      textAr: "عمل ممتاز في نظام ERP.",
       avatar: ""
     },
     {
@@ -182,8 +169,8 @@ const initialData: DataState = {
       name: "Sara Al-Mahdi",
       company: "Hospital Group",
       rating: 5,
-      text: "The hospital management system exceeded our expectations. Highly recommended.",
-      textAr: "نظام إدارة المستشفى تجاوز توقعاتنا. أنصح به بشدة.",
+      text: "The hospital management system exceeded our expectations.",
+      textAr: "نظام إدارة المستشفى تجاوز توقعاتنا.",
       avatar: ""
     }
   ],
@@ -191,20 +178,20 @@ const initialData: DataState = {
     hero: {
       name: "Mohannad Mohammed Al-Qudsi",
       nameAr: "مهند محمد القدسي",
-      titles: ["Software Engineer", "Desktop App Developer", "Full Stack Developer", "UI/UX Designer", "Database Specialist"],
-      titlesAr: ["مهندس برمجيات", "مطور تطبيقات سطح المكتب", "مطور Full Stack", "مصمم UI/UX", "متخصص في قواعد البيانات"],
-      description: "Passionate about building intelligent software that combines performance, simplicity, elegance, and innovation.",
-      descriptionAr: "شغوف ببناء برامج ذكية تجمع بين الأداء والبساطة والأناقة والابتكار."
+      titles: ["Software Engineer", "Desktop App Developer", "Full Stack Developer"],
+      titlesAr: ["مهندس برمجيات", "مطور تطبيقات سطح المكتب", "مطور Full Stack"],
+      description: "Passionate about building intelligent software.",
+      descriptionAr: "شغوف ببناء برامج ذكية تجمع بين الأداء والبساطة."
     },
     about: {
-      biography: "I am a passionate software engineer specializing in desktop application development using C#, DevExpress, and SQL Server.",
-      biographyAr: "أنا مهندس برمجيات شغوف متخصص في تطوير تطبيقات سطح المكتب باستخدام C# و DevExpress و SQL Server.",
-      mission: "Building intelligent software that combines high performance and elegant design.",
-      missionAr: "بناء برامج ذكية تجمع بين الأداء العالي والتصميم الأنيق.",
-      vision: "To be a leader in software development in the Arab world.",
-      visionAr: "أن أكون رائداً في مجال تطوير البرمجيات في المنطقة العربية.",
-      goals: "Contributing to digital transformation and building innovative software solutions.",
-      goalsAr: "المساهمة في التحول الرقمي وبناء حلول برمجية مبتكرة."
+      biography: "I am a passionate software engineer.",
+      biographyAr: "أنا مهندس برمجيات شغوف.",
+      mission: "Building intelligent software.",
+      missionAr: "بناء برامج ذكية.",
+      vision: "To be a leader in the Arab world.",
+      visionAr: "أن أكون رائداً في العالم العربي.",
+      goals: "Contributing to digital transformation.",
+      goalsAr: "المساهمة في التحول الرقمي."
     },
     contact: {
       email: "mohannad@qudsi.dev",
@@ -244,51 +231,68 @@ interface DataContextType {
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
+const hasSupabase = 
+  typeof window !== 'undefined' && 
+  process.env.NEXT_PUBLIC_SUPABASE_URL && 
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
 export function DataProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<DataState | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Load data on mount
-  const refresh = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch("/api/data", { cache: "no-store" });
-      if (res.ok) {
-        const serverData = await res.json();
-        if (serverData && serverData.projects) {
-          setData(serverData);
-        } else {
-          setData(initialData);
-        }
-      } else {
-        setData(initialData);
-      }
-    } catch (e) {
-      console.error("Failed to load data", e);
-      setData(initialData);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Load data
   useEffect(() => {
-    refresh();
+    const loadData = async () => {
+      try {
+        // Try Supabase first
+        if (hasSupabase) {
+          const supabaseData = await getPortfolioData();
+          if (supabaseData) {
+            setData(supabaseData);
+            setLoading(false);
+            return;
+          }
+        }
+        
+        // Fallback to localStorage
+        const stored = localStorage.getItem("portfolio_data_v1");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed && parsed.projects) {
+            setData(parsed);
+            setLoading(false);
+            return;
+          }
+        }
+        
+        // Use default
+        setData(defaultData);
+        localStorage.setItem("portfolio_data_v1", JSON.stringify(defaultData));
+      } catch (e) {
+        console.error("Failed to load data", e);
+        setData(defaultData);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
   }, []);
 
-  // Save data to server
+  // Save data
   const saveData = async (newData: DataState) => {
     try {
-      setData(newData); // Update local state immediately
-      const res = await fetch("/api/data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newData),
-      });
-      if (!res.ok) {
-        console.error("Failed to save to server");
+      // Save to Supabase
+      if (hasSupabase) {
+        await savePortfolioData(newData);
       }
+      
+      // Always save to localStorage as backup
+      localStorage.setItem("portfolio_data_v1", JSON.stringify(newData));
+      setData(newData);
     } catch (e) {
       console.error("Failed to save data", e);
+      localStorage.setItem("portfolio_data_v1", JSON.stringify(newData));
+      setData(newData);
     }
   };
 
@@ -414,6 +418,15 @@ export function DataProvider({ children }: { children: ReactNode }) {
       }
     };
     await saveData(newData);
+  };
+
+  const refresh = async () => {
+    if (hasSupabase) {
+      const supabaseData = await getPortfolioData();
+      if (supabaseData) {
+        setData(supabaseData);
+      }
+    }
   };
 
   return (
