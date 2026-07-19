@@ -5,10 +5,11 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { getAdminUser } from "@/lib/supabase";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const { language, translations } = useLanguage();
+  const { language } = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -28,13 +29,13 @@ export default function AdminLoginPage() {
     subtitle: language === "ar" ? "سجل دخول لإدارة موقعك" : "Sign in to manage your portfolio",
     emailLabel: language === "ar" ? "البريد الإلكتروني" : "Email",
     passwordLabel: language === "ar" ? "كلمة المرور" : "Password",
-    emailPlaceholder: "admin@mohannad.dev",
+    emailPlaceholder: language === "ar" ? "أدخل بريدك الإلكتروني" : "Enter your email",
     passwordPlaceholder: language === "ar" ? "أدخل كلمة المرور" : "Enter your password",
     signIn: language === "ar" ? "تسجيل الدخول" : "Sign In",
     signing: language === "ar" ? "جاري الدخول..." : "Signing in...",
     backToPortfolio: language === "ar" ? "← العودة للموقع" : "← Back to Portfolio",
-    demo: language === "ar" ? "تجربة: admin@mohannad.dev / admin123" : "Demo: admin@mohannad.dev / admin123",
     invalidCreds: language === "ar" ? "بيانات الدخول غير صحيحة. حاول مرة أخرى." : "Invalid credentials. Please try again.",
+    noUsers: language === "ar" ? "لا يوجد مستخدمون. أضف مستخدم من Supabase." : "No users found. Add a user from Supabase.",
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,13 +43,27 @@ export default function AdminLoginPage() {
     setIsLoading(true);
     setError("");
     
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    if (email === "admin@mohannad.dev" && password === "admin123") {
-      localStorage.setItem("adminAuth", "true");
-      router.push("/admin/dashboard");
-    } else {
+    try {
+      // Try to get user from Supabase
+      const user = await getAdminUser(email);
+      
+      if (user) {
+        // Check password (simple comparison - in production use hashed passwords)
+        if (user.password_hash === password) {
+          localStorage.setItem("adminAuth", "true");
+          localStorage.setItem("adminEmail", email);
+          localStorage.setItem("adminName", user.name || email);
+          router.push("/admin/dashboard");
+        } else {
+          setError(t.invalidCreds);
+        }
+      } else {
+        setError(t.invalidCreds);
+      }
+    } catch (err) {
+      console.error("Login error:", err);
       setError(t.invalidCreds);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -149,10 +164,6 @@ export default function AdminLoginPage() {
             <a href="/" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               {t.backToPortfolio}
             </a>
-          </div>
-          
-          <div className="mt-8 pt-6 border-t border-border">
-            <p className="text-muted-foreground text-xs text-center">{t.demo}</p>
           </div>
         </div>
       </motion.div>
