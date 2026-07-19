@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Download, Eye, Mail, ChevronDown, Github, LinkedinIcon, Instagram, Facebook } from "lucide-react";
+import { Download, Eye, Mail, ChevronDown, Github, Linkedin, InstagramIcon, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useData } from "@/contexts/DataContext";
